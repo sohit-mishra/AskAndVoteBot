@@ -1,6 +1,10 @@
+const express = require('express');
+const app = express();
+
 const {Telegraf} = require('telegraf');
 require('dotenv').config();
 const token = process.env.BOT_TOKEN;
+const PORT = process.env.PORT || 3000;
 const bot = new Telegraf(token);
 
 const polls = {};
@@ -115,3 +119,12 @@ bot.command('results', (ctx) => {
 bot.launch();
 
 console.log('Pollster Bot is running...');
+
+
+app.get('',(req,res)=>{
+    res.send({message:"Hello World"});
+})
+
+app.listen(PORT,()=>{
+    console.log(`Server is working`);
+})
